@@ -3,19 +3,34 @@ public class Ex2 {
 
 	public static void main(String[] args) {
 
+		// eps defined for the root function
 		double eps = 0.001;
-		//tests
-		double[] p6 = { 6 , 5 , 1 };
-		System.out.println(poly(p6));
-		double root = root(p6, -2.5 , 100 , eps);
-
-		System.out.println("Root is "+root);
-		double[] p1 = { 2 , 0 , 3 , -1 , 0} ;
-		System.out.println(poly(derivative(p1)));
-
-
-
 		
+		//tests
+		 // x^2 + 5x + 6
+		  // made up by (x+3)(x+2)
+		double[] p1 = { 6 , 5 , 1 }; 
+		System.out.println("The array P1 given as a string is = " + poly(p1));
+		double root = root(p1, -2.5 , 100 , eps);
+		System.out.println("The root between two gives x co-ordinates is "+root);
+		System.out.println("approximately");
+
+		double[] p1_add = add(p1, p1);
+		String p1_add_text = poly(p1_add);
+		
+		double[] p1_mul = mul(p1, p1);
+		String p1_mul_text = poly(p1_mul);
+		
+		double[] p1_der = derivative(p1);
+		String p1_der_text = poly(p1_der);
+		
+		System.out.println();
+		System.out.println("P1 added to itself is = "+p1_add_text);
+		System.out.println();
+		System.out.println("P1 multiplied by itself is = "+p1_mul_text);
+		System.out.println();
+		System.out.println("P1's derivative is = "+p1_der_text);
+
 	}
 	
 
