@@ -87,7 +87,7 @@ public class Ex3 {
 	 * @param nums
 	 * @return
 	 */
-	public static boolean mySplit(int[] nums)//might actually be done
+	public static boolean mySplit(int[] nums)
 	{
 		if (nums.length < 2)
 			return false;
