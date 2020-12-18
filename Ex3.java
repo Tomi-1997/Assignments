@@ -126,10 +126,10 @@ public class Ex3 {
 	 * of the sum of it's neighboring entries. minimum neighbors are 3, max neighbors are 8.
 	 * 
 	 * for example: for the matrice [1 2]
-	 * 								[3 4]
+	 * 				[3 4]
 	 * 
 	 * the function will return     [9 8]
-	 * 				   this matrice	[7 6]
+	 * 		  this matrice  [7 6]
 	 * 
 	 * As around 1, it sums up 2+3+4, around 2 are 1+3+4, around 3 are 1+2+4, and around 4 are 1+2+3.
 	 * 
