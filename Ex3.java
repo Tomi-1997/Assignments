@@ -126,66 +126,54 @@ public class Ex3 {
 	 * of the sum of it's neighboring entries. minimum neighbors are 3, max neighbors are 8.
 	 * 
 	 * for example: for the matrice [1 2]
-	 * 				[3 4]
+	 * 								[3 4]
 	 * 
 	 * the function will return     [9 8]
-	 * 		  this matrice  [7 6]
+	 * 				   this matrice	[7 6]
 	 * 
 	 * As around 1, it sums up 2+3+4, around 2 are 1+3+4, around 3 are 1+2+4, and around 4 are 1+2+3.
 	 * 
 	 * author Tom Inbar ID 318456993
 	 * @param mat
 	 * @return
-	 */
-	public static int[][]SumOfNeighbours(int [][]mat)
+	 */	
+	public static int[][] SumOfNeighbours(int [][]mat)
 	{
-		int row = mat.length;
-		int column = mat[0].length;
-		int[][] newM = new int[row][column];
+		int [][] new_mat = new int[mat.length][mat[0].length];
 		
-		for (int i = 0; i < row; i++)
+		for (int i=0; i<mat.length; i++)
 		{
-			for (int j = 0; j < column; j++)
+			for (int j=0; j<mat[0].length; j++)
 			{
 				/*
-				 * First case, which occurs four times, the entry is at the edge of the 
-				 * array. either top left, top right, bottom right, bottom left.
+				 * This function sums all nearby entries of mat[i][j], except mat[i][j] itself.
+				 * Using a double for ranging from (i/j - 1) to (i/j + 1) using try{} and catch{}
+				 * to avoid index out of bounds error.
 				 */
-				if ( ( i == 0 && j == 0 ) || (i == row-1 && j == column -1) 
-					|| (i == 0 && j == column-1) || (j == 0 && i == row-1)) 
-					sumEdge_i_j(mat, newM, i , j);
-				/*
-				 * Second case, if the array has no indexes to it's left, or to it's right
-				 * in which case the sum is made from 5 entries.
-				 */
-				else if (i == 0 || i == row-1)
-					sumEdge_i(mat, newM, i , j);
-				/*
-				 * Third case, if the array has no indexes above or below, in this case
-				 * it is also a sum of 5 entries.
-				 */
-				else if ( j == 0 || j == column-1)
-					sumEdge_j(mat, newM, i , j);
-				/*
-				 * Last case scenario, if the entry has no limitations and can safely
-				 * sum up it's 8 neighbors.
-				 */
-				else
-					sumNoEdge(mat, newM, i , j);
-					
+				new_mat[i][j] = sumNearby(mat, i, j);
 			}
 		}
 		
-		return newM;
+		return new_mat;
 	}
-
+	
+	/** This function receives a string and moves each letter to x number of steps
+	 * to the left or right, depending on the given key.
+	 * For example given string "abcd" and
+	 * key = 1, the function will return "bcdf". 
+	 * for key = 2, the function will return "cdef".
+	 * 
+	 * for a negative value key, each letter will move some steps to the left, for a
+	 * positive key, each letter will move some steps to the right.
+	 * 
+	 * author Tom Inbar ID 318456993
+	 * @param str
+	 * @param key
+	 * @return
+	 */
 	public static String caesarCipherText(String str, int key)
 	{
 		
-		 /* This function receives a string and moves each letter to another
-		 * position depending on the key. For example given string "abcd" and
-		 * key = 1, the function will return "bcdf"
-		 */
 		if (!(key >= 0 || key < 0))
 			return "INVALID KEY"; // Checking if it is invalid.
 		
@@ -366,8 +354,7 @@ public class Ex3 {
 	public static int sumArrays(int []arr1, int[] arr2)
 	{
 		/*
-		 * using sumArray function, this function compares the sum of two given arrays' entities
-		 *  and returns true if they are the same
+		 * using sumArray function, this function returns the sum of two arrays.
 		 */
 		return sumArray(arr1) + sumArray(arr2);
 	}
@@ -531,84 +518,6 @@ public class Ex3 {
 		return condition(nums, nums1_final, nums2_final);
 	}
 
-	/**
-	 * These functions are used in exercise four to assist summing up the values of neighboring
-	 * entries in a 2d array
-	 * @param mat
-	 * @param newMat
-	 * @param i
-	 * @param j
-	 */
-	public static void sumEdge_i_j(int [][]mat, int [][]newMat, int i, int j)
-	{
-		/*
-		 * In the case the entry is at one of the four edges of the matrice
-		 */
-		if ( j == 0 )
-			{
-			if (i == 0)
-			newMat[i][j] = newMat[i][j] + mat[i+1][j] + mat[i][j+1] + mat[i+1][j+1];
-			
-			else 
-			newMat[i][j] = newMat[i][j] + mat[i][j+1] + mat[i-1][j] + mat[i-1][j+1];
-			}
-		else {
-			if (i == (0))
-			newMat[i][j] = newMat[i][j] + mat[i][j-1] + mat[i+1][j] + mat[i+1][j-1];
-			
-			else
-			newMat[i][j] = newMat[i][j] + mat[i][j-1] + mat[i-1][j] + mat[i-1][j-1];
-		}
-	}
-	public static void sumEdge_i(int [][]mat, int [][]newMat, int i, int j)
-	{
-		/*
-		 * Sum in case the entry is at the farthest left or right,
-		 * edge of the row, basically
-		 */
-		if (i == 0)
-		{
-		newMat[i][j] = newMat[i][j] + mat[i][j-1] + mat[i][j+1];
-		newMat[i][j] = newMat[i][j] + mat[i+1][j-1] + mat[i+1][j] + mat[i+1][j+1];
-		}
-		else
-		{
-		newMat[i][j] = newMat[i][j] + mat[i][j-1] + mat[i][j+1];
-		newMat[i][j] = newMat[i][j] + mat[i-1][j-1] + mat[i-1][j] + mat[i-1][j+1];
-		}
-	}
-	public static void sumEdge_j(int [][]mat, int [][]newMat, int i, int j)
-	{
-		/*
-		 * Sum in case the entry is at the bottom or at the top
-		 * edge of the column, basically
-		 */
-		if (j == 0)
-		{
-		newMat[i][j] = newMat[i][j] + mat[i-1][j] + mat[i+1][j];
-		newMat[i][j] = newMat[i][j] + mat[i][j+1] + mat[i+1][j+1] + mat[i-1][j+1];
-		}
-		else
-		{
-		newMat[i][j] = newMat[i][j] + mat[i-1][j] + mat[i+1][j];
-		newMat[i][j] = newMat[i][j] + mat[i][j-1] + mat[i+1][j-1] + mat[i-1][j-1];
-		}
-	}
-	public static void sumNoEdge(int [][]mat, int [][]newMat, int i, int j)
-	{
-		/*
-		 * Sums up the eight neighbours in case the entry is not at any edge
-		 */
-		for ( int iz = i-1; iz<= i+1; iz++)
-		{
-			for ( int jz = j-1; jz<= j+1; jz++)
-			{
-				if ( !(jz == j && iz == i) ) //Making sure it doesn't add the point itself
-					newMat[i][j] = newMat[i][j] + mat[iz][jz];
-			}
-		}
-	}
-	
 	public static char keepInRange(char charAt, int key) {
 		/*
 		 * This function receives a character and a key which made it go outside the range
@@ -616,6 +525,7 @@ public class Ex3 {
 		 * of overall letters.
 		 */
 		char a = (char) (charAt + key);
+		
 		while ( a > 122 || a < 97)
 		{
 			if ( a > 122) a = (char) (a - 26);
@@ -625,5 +535,32 @@ public class Ex3 {
 		return a;
 	}
 
+	public static int sumNearby(int[][] mat, int x, int y) {
+		int sum = 0;
+		
+		for (int i=(x-1);i<=(x+1); i++)
+		{
+			for (int j=(y-1); j<=(y+1); j++)
+			{
+				/*
+				 * Sum all neighboring entries (except our given mat[x][y])
+				 * and if there is an index out of bounds error,
+				 * continue to the next j iteration.
+				 */
+				try {
+					if ( !((i == x) && (j == y)) ) 
+						sum = sum + mat[i][j];
+					}
+					
+					catch (ArrayIndexOutOfBoundsException e)
+					{
+						continue;
+					}
+			}
+		}
+		
+		return sum;
+	}
+	
 }//
 
