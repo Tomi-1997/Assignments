@@ -2,7 +2,7 @@
 public class Ex3 {
 	
 	public static String myID() {
-		return "318456993";
+		return "";
 	}
 	
 	//
@@ -13,7 +13,7 @@ public class Ex3 {
     * to the end of the string via recursion.
     * for example, given "shalom", and 'l' returns "shaoml"
     * 
-    * author Tom Inbar ID NUM 318456993
+    * author Tom Inbar
     * @param str
     * @param ch
     * @return
@@ -46,7 +46,7 @@ public class Ex3 {
 	 * with no repeats of any character in the string via recursion.
 	 * for example, given "shalllllllllommmm", return "shalom"
 	 * 
-	 * author Tom Inbar ID NUM 318456993
+	 * author Tom Inbar ID NUM
 	 * @param str
 	 * @return
 	 */
@@ -83,7 +83,7 @@ public class Ex3 {
 	 * i.e for an array {30, 27, 3} returns true, since it contains {27 , 3} and {30}
 	 * another example, for an array {5,3,3} returns false as {3,3} and {5} don't sum up to the same value
 	 * 
-	 * Author Tom Inbar ID NUM 318456993
+	 * Author Tom Inbar ID NUM
 	 * @param nums
 	 * @return
 	 */
@@ -133,7 +133,7 @@ public class Ex3 {
 	 * 
 	 * As around 1, it sums up 2+3+4, around 2 are 1+3+4, around 3 are 1+2+4, and around 4 are 1+2+3.
 	 * 
-	 * author Tom Inbar ID 318456993
+	 * author Tom Inbar ID
 	 * @param mat
 	 * @return
 	 */	
@@ -166,7 +166,7 @@ public class Ex3 {
 	 * for a negative value key, each letter will move some steps to the left, for a
 	 * positive key, each letter will move some steps to the right.
 	 * 
-	 * author Tom Inbar ID 318456993
+	 * author Tom Inbar ID
 	 * @param str
 	 * @param key
 	 * @return
@@ -213,7 +213,7 @@ public class Ex3 {
      * thus the deciphered string will be "ccc".
      * after looping key's letters, it will return to the first letter, in this case to 'a'.
      *  
-     * author Tom Inbar ID NUM 318456993
+     * author Tom Inbar ID NUM
 	 * @param str
 	 * @param key
 	 * @return
@@ -265,7 +265,7 @@ public class Ex3 {
      * 'c' will be pushed BACK by 0, the second 'c' will be pushed back by 1, the third 'c' will be pushed back by 3,
      * and so our deciphered string will be "cba", exactly the original string before ciphering it with our previous function.
      * 
-     * author Tom Inbar ID NUM 318456993
+     * author Tom Inbar ID NUM
 	 * @param str
 	 * @param key
 	 * @return
@@ -558,7 +558,6 @@ public class Ex3 {
 					}
 			}
 		}
-		
 		return sum;
 	}
 	
